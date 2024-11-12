@@ -1,0 +1,27 @@
+spin_manifest_version = 2
+
+[application]
+name = "hello-world-with-spin"
+version = "0.1.0"
+authors = ["Takashi Sunaga <84524584+Sunaga0709@users.noreply.github.com>"]
+description = ""
+
+[component.hello-world]
+source = "/Users/sunaga/wasm/hello-wasi-http/target/wasm32-wasip1/debug/hello_wasi_http.wasm"
+
+[[trigger.http]]
+component = "hello-world"
+route = "/hello-world/..."
+
+[[trigger.http]]
+route = "/..."
+component = "echo"
+
+[component.echo]
+source = "echo/target/wasm32-wasip1/release/echo.wasm"
+allowed_outbound_hosts = []
+
+[component.echo.build]
+command = "cargo build --target wasm32-wasip1 --release"
+workdir = "echo"
+watch = ["src/**/*.rs", "Cargo.toml"]

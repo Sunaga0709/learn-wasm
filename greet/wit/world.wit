@@ -1,0 +1,11 @@
+package mynamespace:greet;
+
+interface greetable {
+    name:  func() -> string;
+    greet: func(name: string) -> string;
+}
+
+world greetable-provider {
+    export greetable;
+}
+

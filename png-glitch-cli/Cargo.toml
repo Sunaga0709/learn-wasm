@@ -1,0 +1,16 @@
+[package]
+name = "png-gltich-cli"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.93"
+bitflags = "2.6.0"
+clap = { version = "4.5.20", features = ["derive"] }
+png-glitch = "0.3.1"
+wit-bindgen-rt = "0.34.0"
+
+# wasm component package
+[package.metadata.component]
+package = "sunaga0709:png-glitch-cli"
+target = "sunaga0709:glitch-art/png-glitch-cli@0.1.0"
